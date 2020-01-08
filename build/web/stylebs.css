@@ -1,0 +1,7 @@
+.jumbotron{
+    position: relative;
+    background: rgb(0, 0, 0) url("img/Snack4.jpg")center center ;
+    background-size: cover;
+    overflow: hidden;
+    color:white;
+}
