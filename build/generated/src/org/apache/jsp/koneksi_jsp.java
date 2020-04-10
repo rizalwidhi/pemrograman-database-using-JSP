@@ -125,57 +125,97 @@ public final class koneksi_jsp extends org.apache.jasper.runtime.HttpJspBase
 
                                 Class.forName("com.mysql.jdbc.Driver").newInstance();
                                 Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:3306"
-                                        + "/distributor_snack", "root", "");
+                                        + "/penjualan", "root", "");
                                 Statement sn2 = cn.createStatement();
 
-                                if ((request.getParameter("id_brg") != null) && (request.getParameter("nama_brg") != null) && (request.getParameter("berat") != null) && (request.getParameter("jenis") != null) && (request.getParameter("harga_beli") != null) && (request.getParameter("harga_jual") != null) && (request.getParameter("stok") != null)) {
-                                    String idB = request.getParameter("id_brg");
-                                    String namaB = request.getParameter("nama_brg");
-                                    String beratB = request.getParameter("berat");
-                                    String jenisB = request.getParameter("jenis");
-                                    String hargabB = request.getParameter("harga_beli");
-                                    String hargajB = request.getParameter("harga_jual");
-                                    String stokB = request.getParameter("stok");
-                                    String myQ = "insert into barang values('" + idB + "','" + namaB + "', '" + beratB + "','" + jenisB + "','" + hargabB + "','" + hargajB + "','" + stokB + "')";
+                                if ((request.getParameter("id_detail") != null) && (request.getParameter("id_barang") != null) && (request.getParameter("id_kategori") != null) && (request.getParameter("id_kemasan") != null) && (request.getParameter("id_produsen") != null)&& (request.getParameter("id_stok") != null)) {
+                                    String idB = request.getParameter("id_detail");
+                                    String namaB = request.getParameter("id_barang");
+                                    String kategoriB = request.getParameter("id_kategori");
+                                    String kemasanB = request.getParameter("id_kemasan");
+                                    String produsenB = request.getParameter("id_produsen");
+                                    
+                                    String myQ = "insert into detail_barang values('" + idB + "','" + namaB + "','" + kategoriB + "','" + kemasanB + "','" + produsenB + "')";
                                     int x;
                                     try {
                                         x = sn2.executeUpdate(myQ);
+                                        
                                     } catch (Exception e) {
                                         e.printStackTrace();
+                                        
                                     }
                                 }
+                           
+                            ResultSet rs4,rs5,rs6,rs7;
+                            PreparedStatement ps4 = cn.prepareStatement("Select * from barang");
+                            PreparedStatement ps5 = cn.prepareStatement("Select * from kategori");
+                            PreparedStatement ps6 = cn.prepareStatement("Select * from kemasan");
+                            PreparedStatement ps7 = cn.prepareStatement("Select * from produsen");
+                            
+                            
+                            rs4 = ps4.executeQuery();
+                            rs5 = ps5.executeQuery();
+                            rs6 = ps6.executeQuery();
+                            rs7 = ps7.executeQuery();
+                           
                             
       out.write("\n");
       out.write("                            <form>\n");
       out.write("                                <div class=\"form-group\" method=\"post\" action=\"\">\n");
       out.write("                                    <label><strong>ID Barang</strong></label>\n");
-      out.write("                                    <input type=\"text\" class=\"form-control\" name=\"id_brg\" id=\"#\" placeholder=\"Masukkan Id\">\n");
+      out.write("                                    <input type=\"text\" class=\"form-control\" name=\"id_katalog\" id=\"#\" placeholder=\"Masukkan Id\">\n");
       out.write("                                </div>\n");
       out.write("                                <div class=\"form-group\">\n");
       out.write("                                    <label><strong>Nama Barang</strong></label>\n");
-      out.write("                                    <input type=\"text\" class=\"form-control\" name=\"nama_brg\" id=\"#\" placeholder=\"Masukkan Nama\">\n");
+      out.write("                                    <select class=\"form-control\" name=\"nama_barang\" id=\"#\">");
+while(rs4.next()){
+      out.write("\n");
+      out.write("                                        <option>");
+      out.print( rs4.getString(2));
+      out.write("</option>\n");
+      out.write("                                        ");
+}
+      out.write("</select>\n");
       out.write("                                </div>\n");
       out.write("                                <div class=\"form-group\">\n");
-      out.write("                                    <label><strong>Berat</strong></label>\n");
-      out.write("                                    <input type=\"text\" class=\"form-control\" name=\"berat\" id=\"#\" placeholder=\"Masukkan Berat\">\n");
+      out.write("                                    <label><strong>Kategori</strong></label>\n");
+      out.write("                                    <select class=\"form-control\" name=\"kategori_snack\" id=\"#\">");
+while(rs5.next()){
+      out.write("\n");
+      out.write("                                        <option>");
+      out.print( rs5.getString(2));
+      out.write("</option>\n");
+      out.write("                                        ");
+}
+      out.write("</select>\n");
       out.write("                                </div>\n");
       out.write("                                <div class=\"form-group\">\n");
-      out.write("                                    <label><strong>Jenis</strong></label>\n");
-      out.write("                                    <input type=\"text\" class=\"form-control\" name=\"jenis\" id=\"#\" placeholder=\"Masukkan Jenis\">\n");
+      out.write("                                    <label><strong>Kemasan /gr</strong></label>\n");
+      out.write("                                    <select class=\"form-control\" name=\"jenis_kemasan\" id=\"#\">");
+while(rs6.next()){
+      out.write("\n");
+      out.write("                                        <option>");
+      out.print( rs6.getString(2));
+      out.write("</option>\n");
+      out.write("                                        ");
+}
+      out.write("</select>\n");
       out.write("                                </div>\n");
       out.write("                                <div class=\"form-group\">\n");
-      out.write("                                    <label><strong>Harga Beli</strong></label>\n");
-      out.write("                                    <input type=\"text\" class=\"form-control\" name=\"harga_beli\" id=\"#\" placeholder=\"Masukkan Harga Beli\">\n");
+      out.write("                                    <label><strong>Produk</strong></label>\n");
+      out.write("                                    <select class=\"form-control\" name=\"nama_produsen\" id=\"#\">");
+while(rs7.next()){
+      out.write("\n");
+      out.write("                                        <option>");
+      out.print( rs7.getString(2));
+      out.write("</option>\n");
+      out.write("                                        ");
+}
+      out.write("</select>\n");
       out.write("                                </div>\n");
-      out.write("                                <div class=\"form-group\">\n");
-      out.write("                                    <label><strong>Harga Jual</strong></label>\n");
-      out.write("                                    <input type=\"text\" class=\"form-control\" name=\"harga_jual\" id=\"#\" placeholder=\"Masukkan Harga Jual\">\n");
-      out.write("                                </div>\n");
-      out.write("                                <div class=\"form-group\">\n");
-      out.write("                                    <label><strong>Stok</strong></label>\n");
-      out.write("                                    <input type=\"text\" class=\"form-control\" name=\"stok\" id=\"#\" placeholder=\"Masukkan Stok\">\n");
-      out.write("                                </div>\n");
-      out.write("                                <button type=\"submit\" value=\"kirim\" class=\"btn btn-primary\" onclick=\"saveData()\">Kirim</button>\n");
+      out.write("                                \n");
+      out.write("                               \n");
+      out.write("                                <button type=\"submit\" value=\"kirim\" class=\"btn btn-primary\" onClick=\"javascript : return confirm('Apakah yakin akan menambahkan data?')\">Kirim</button>\n");
       out.write("                            </form>\n");
       out.write("                        </div>\n");
       out.write("                        <div class=\"modal-footer\">\n");
@@ -187,12 +227,12 @@ public final class koneksi_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            ");
 
                 Class.forName("com.mysql.jdbc.Driver").newInstance();
-                Connection con = DriverManager.getConnection("jdbc:mysql://localhost/distributor_snack", "root", "");
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost/penjualan", "root", "");
                 Statement sn = con.createStatement();
 
                 if (request.getParameter("i") != null) {
                     String p = request.getParameter("i");
-                    String q = "delete from barang where id_brg = '" + p + "'";
+                    String q = "delete from detail_barang where id_detail = '" + p + "'";
 
                     try {
                         sn.executeUpdate(q);
@@ -200,7 +240,7 @@ public final class koneksi_jsp extends org.apache.jasper.runtime.HttpJspBase
                         e.printStackTrace();
                     }
                 }
-                ResultSet rs = sn.executeQuery("select * from barang");
+                ResultSet rs = sn.executeQuery("SELECT detail_barang.*, stok.stok from detail_barang INNER JOIN stok ON detail_barang.id_barang = stok.id_barang");
 
             
       out.write("\n");
@@ -212,10 +252,9 @@ public final class koneksi_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                            <tr>\n");
       out.write("                                <th scope=\"col\">Id Barang</th>\n");
       out.write("                                <th scope=\"col\">Nama Barang</th>\n");
-      out.write("                                <th scope=\"col\">Berat</th>\n");
-      out.write("                                <th scope=\"col\">Jenis</th>\n");
-      out.write("                                <th scope=\"col\">Harga Beli</th>\n");
-      out.write("                                <th scope=\"col\">Harga Jual</th>\n");
+      out.write("                                <th scope=\"col\">Kategori</th>\n");
+      out.write("                                <th scope=\"col\">Kemasan</th>\n");
+      out.write("                                <th scope=\"col\">Produk</th>\n");
       out.write("                                <th scope=\"col\">Stok</th>\n");
       out.write("                                <th scope=\"col\">&nbsp;</th>\n");
       out.write("                                <th scope=\"col\">&nbsp;</th>\n");
@@ -234,22 +273,19 @@ public final class koneksi_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("</td>\n");
       out.write("                                <td>");
       out.print( rs.getString(3));
-      out.write(" gr</td>\n");
-      out.write("                                <td>");
+      out.write("</td>                               \n");
+      out.write("                                 <td>");
       out.print( rs.getString(4));
-      out.write("</td>\n");
-      out.write("                                 <td>Rp. ");
+      out.write(" gr</td>\n");
+      out.write("                                  <td>");
       out.print( rs.getString(5));
       out.write("</td>\n");
-      out.write("                                  <td>Rp. ");
+      out.write("                                  <td>");
       out.print( rs.getString(6));
-      out.write("</td>\n");
-      out.write("                                   <td>");
-      out.print( rs.getString(7));
       out.write("</td>\n");
       out.write("                                <td><a href=\"koneksi.jsp?i=");
       out.print( rs.getString(1));
-      out.write("\" onClick=\"delData()\"><button type=\"button\" class=\"btn btn-danger\">\n");
+      out.write("\" onClick=\"javascript : return confirm('Apakah yakin akan menghapus data?')\"><button type=\"button\" class=\"btn btn-danger\">\n");
       out.write("                                            Delete\n");
       out.write("                                        </button></a></td>\n");
       out.write("                                <td><!-- Button trigger modal -->\n");
@@ -286,10 +322,10 @@ public final class koneksi_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            ");
 
                 Class.forName("com.mysql.jdbc.Driver").newInstance();
-                Connection con1 = DriverManager.getConnection("jdbc:mysql://localhost/distributor_snack", "root", "");
+                Connection con1 = DriverManager.getConnection("jdbc:mysql://localhost/penjualan", "root", "");
                 Statement sn1 = con1.createStatement();
                 ResultSet rs1;
-                PreparedStatement ps = con1.prepareStatement("select * from barang where nama_brg like ?");
+                PreparedStatement ps = con1.prepareStatement("SELECT barang.*, stock.stock from barang INNER JOIN stock ON barang.id_barang = stock.id_barang where barang.nama_barang like ?");
                 ps.setString(1, "%" + request.getParameter("cari_nama") + "%");
                 rs1 = ps.executeQuery();
             
@@ -301,18 +337,17 @@ public final class koneksi_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                <button type=\"reset\" class=\"btn btn-outline-danger\" name=\"reset\">Reset</button>\n");
       out.write("            </form>\n");
       out.write("            <br>\n");
-      out.write("\n");
+      out.write("            \n");
       out.write("            <div class=\"row\">\n");
       out.write("                <div class=\"col-sm\">\n");
       out.write("                    <table class=\"table table-striped table-hover\">\n");
       out.write("                        <thead class=\"table-primary\">\n");
       out.write("                            <tr>\n");
-      out.write("                                <th scope=\"col\">Id Barang</th>\n");
+      out.write("                               <th scope=\"col\">Id Barang</th>\n");
       out.write("                                <th scope=\"col\">Nama Barang</th>\n");
-      out.write("                                <th scope=\"col\">Berat</th>\n");
-      out.write("                                <th scope=\"col\">Jenis</th>\n");
-      out.write("                                <th scope=\"col\">Harga Beli</th>\n");
-      out.write("                                <th scope=\"col\">Harga Jual</th>\n");
+      out.write("                                <th scope=\"col\">Kategori</th>\n");
+      out.write("                                <th scope=\"col\">Kemasan</th>\n");
+      out.write("                                <th scope=\"col\">Produk</th>\n");
       out.write("                                <th scope=\"col\">Stok</th>\n");
       out.write("                            </tr>\n");
       out.write("                        </thead>\n");
@@ -322,22 +357,19 @@ public final class koneksi_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("                            <tr>\n");
       out.write("                                <th scope=\"row\">");
-      out.print( rs1.getString("id_brg"));
+      out.print( rs1.getString("id_barang"));
       out.write("</th>\n");
       out.write("                                <td>");
-      out.print( rs1.getString("nama_brg"));
+      out.print( rs1.getString("nama_barang"));
       out.write("</td>\n");
       out.write("                                <td>");
-      out.print( rs1.getString("berat"));
+      out.print( rs1.getString("kategori"));
       out.write("</td>\n");
       out.write("                                <td>");
-      out.print( rs1.getString("jenis"));
+      out.print( rs1.getString("Kemasan"));
       out.write("</td>\n");
       out.write("                                <td>");
-      out.print( rs1.getString("harga_beli"));
-      out.write("</td>\n");
-      out.write("                                <td>");
-      out.print( rs1.getString("harga_jual"));
+      out.print( rs1.getString("produk"));
       out.write("</td>\n");
       out.write("                                <td>");
       out.print( rs1.getString("stok"));

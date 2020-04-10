@@ -83,7 +83,7 @@
                                         + "/distributor_snack", "root", "");
                                 Statement sn2 = cn.createStatement();
 
-                                if ((request.getParameter("id_supplier") != null) && (request.getParameter("nama_supplier") != null) && (request.getParameter("produk") != null) && (request.getParameter("alamat") != null) && (request.getParameter("no_hp") != null) ) {
+                                if ((request.getParameter("id_supplier") != null) && (request.getParameter("nama_supplier") != null) && (request.getParameter("produk") != null) && (request.getParameter("alamat") != null) && (request.getParameter("no_hp") != null)) {
                                     String idS = request.getParameter("id_supplier");
                                     String namaS = request.getParameter("nama_supplier");
                                     String produkS = request.getParameter("produk");
@@ -167,8 +167,8 @@
                                 <th scope="row"><%= rs.getString(1)%></th>
                                 <td><%= rs.getString(2)%></td>
                                 <td><%= rs.getString(3)%> gr</td>                               
-                                 <td><%= rs.getString(4)%></td>
-                                  <td><%= rs.getString(5)%></td>
+                                <td><%= rs.getString(4)%></td>
+                                <td><%= rs.getString(5)%></td>
                                 <td><a href="koneksi.jsp?i=<%= rs.getString(1)%>" onClick="delData()"><button type="button" class="btn btn-danger">
                                             Delete
                                         </button></a></td>
@@ -221,7 +221,7 @@
                     <table class="table table-striped table-hover">
                         <thead class="table-primary">
                             <tr>
-                               <th scope="col">Id Supplier</th>
+                                <th scope="col">Id Supplier</th>
                                 <th scope="col">Nama Supplier</th>
                                 <th scope="col">Produk</th>
                                 <th scope="col">Alamat</th>

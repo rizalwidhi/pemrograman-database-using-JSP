@@ -67,25 +67,12 @@ public final class transaksi_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\"\n");
       out.write("              integrity=\"sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T\" crossorigin=\"anonymous\">\n");
       out.write("        <link rel=\"stylesheet\" href=\"stylebs.css\">\n");
-      out.write("        <style>\n");
-      out.write("            .jumbotron{\n");
-      out.write("                position: relative;\n");
-      out.write("                background: url(\"img/Snack4.jpg\")center center;\n");
-      out.write("                background-size: cover;\n");
-      out.write("                overflow: hidden;\n");
-      out.write("                color:white;\n");
-      out.write("            }\n");
-      out.write("        </style>\n");
+      out.write("       \n");
       out.write("        <title>Tabel with Bootstrap</title>\n");
       out.write("    </head>\n");
       out.write("\n");
       out.write("    <body>\n");
-      out.write("        <div class=\"jumbotron jumbotron-fluid\">\n");
-      out.write("            <div class=\"container\">\n");
-      out.write("                <h1 class=\"display-4\">Pemrograman Database</h1>\n");
-      out.write("                <p class=\"lead\">Persentasi Menampilkan Koneksi Database.</p>\n");
-      out.write("            </div>\n");
-      out.write("        </div>\n");
+      out.write("        \n");
       out.write("\n");
       out.write("        <nav class=\"navbar navbar-expand-lg navbar-dark bg-dark\">\n");
       out.write("            <div class=\"container\">\n");
@@ -125,12 +112,12 @@ public final class transaksi_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("      </div>\n");
       out.write("    </div>\n");
       out.write("    <section class=\"content\">\n");
-      out.write("      <div class=\"container-fluid\">\n");
+      out.write("      <div class=\"container\">\n");
       out.write("        <div class=\"row\">\n");
       out.write("          <div class=\"col-md-12\">\n");
       out.write("            <div class=\"card card-primary\">\n");
-      out.write("              <div class=\"card-header\">\n");
-      out.write("                <h3 class=\"card-title\">Transaksi Pembelian Ditributor Snack</h3>\n");
+      out.write("              <div class=\"card-header bg-primary text-white\">\n");
+      out.write("                <h3 class=\"card-title \">Transaksi Pembelian Snack</h3>\n");
       out.write("              </div>\n");
       out.write("              ");
 
@@ -229,7 +216,7 @@ public final class transaksi_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("              <form method=\"post\" action=\"\" role=\"form\" >\n");
       out.write("                <div class=\"card-body\">\n");
       out.write("                  <div class=\"form-group\">\n");
-      out.write("                    <label>ID Transaksi</label>\n");
+      out.write("                    <strong>ID Transaksi</strong>\n");
       out.write("                    <input type=\"text\" class=\"form-control\" name=\"idtrans\" placeholder=\"ID Transaksi\">\n");
       out.write("                  </div>\n");
       out.write("                  <div class=\"form-group\">\n");
@@ -262,7 +249,7 @@ public final class transaksi_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                  </div>\n");
       out.write("                  <div class=\"form-group\">\n");
       out.write("                    <label>Nama Barang</label></br>\n");
-      out.write("                    <select class=\"form-control\" name=\"namabarang1\" style=\"width: 615px; margin-right: 0px; display: inline-block; \">\n");
+      out.write("                    <select class=\"form-control\" name=\"namabarang1\" style=\"width: 500px; margin-right: 0px; display: inline-block; \">\n");
       out.write("                      <option></option>\n");
       out.write("                      ");
 
@@ -286,7 +273,7 @@ public final class transaksi_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                    <input type=\"text\" class=\"form-control\" style=\"width: 200px; margin-right: 0px; display: inline-block; \" name=\"jml1\" placeholder=\"Jumlah\">\n");
       out.write("                    <input type=\"text\" class=\"form-control\" style=\"width: 200px; margin-right: 0px; display: inline-block; \" name=\"hrg1\" placeholder=\"Harga\">\n");
       out.write("\n");
-      out.write("                    <select class=\"form-control\" name=\"namabarang2\" style=\"width: 615px; margin-right: 0px; display: inline-block; \">\n");
+      out.write("                    <select class=\"form-control\" name=\"namabarang2\" style=\"width: 500px; margin-right: 0px; display: inline-block; \">\n");
       out.write("                      <option></option>\n");
       out.write("                      ");
 
@@ -310,7 +297,7 @@ public final class transaksi_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                    <input type=\"text\" class=\"form-control\" style=\"width: 200px; margin-right: 0px; display: inline-block; \" name=\"jml2\" placeholder=\"Jumlah\">\n");
       out.write("                    <input type=\"text\" class=\"form-control\" style=\"width: 200px; margin-right: 0px; display: inline-block; \" name=\"hrg2\" placeholder=\"Harga\">\n");
       out.write("\n");
-      out.write("                    <select class=\"form-control\" name=\"namabarang3\" style=\"width: 615px; margin-right: 0px; display: inline-block; \">\n");
+      out.write("                    <select class=\"form-control\" name=\"namabarang3\" style=\"width: 500px; margin-right: 0px; display: inline-block; \">\n");
       out.write("                      <option></option>\n");
       out.write("                      ");
 
@@ -346,6 +333,7 @@ public final class transaksi_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("      </div>\n");
       out.write("    </section>\n");
       out.write("  </div>\n");
+      out.write("        </div>\n");
       out.write("            \n");
       out.write("        <!-- Footer -->\n");
       out.write("        <footer id=\"sticky-footer\" class=\"py-4 bg-dark text-white-50\">\n");
